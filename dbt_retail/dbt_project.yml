@@ -19,9 +19,8 @@ models:
   retail_analytics:
     staging:
       +materialized: view
-      +schema: staging
     intermediate:
       +materialized: ephemeral
     marts:
       +materialized: table
-      +schema: marts
+      +schema: "marts_dev"

@@ -1,10 +1,19 @@
+# dbt_retail/profiles.yml
+#
+# The project ID comes from the DBT_PROJECT environment variable.
+# Set it before running dbt:
+#   export DBT_PROJECT=your-gcp-project-id
+#
+# Or pass inline:
+#   DBT_PROJECT=your-project-id dbt run --target dev
+
 retail_analytics:
   target: dev
   outputs:
     dev:
       type: bigquery
-      method: oauth  # uses gcloud auth application-default login
-      project: "retail-analytics-dev"
+      method: oauth
+      project: "{{ env_var('DBT_PROJECT') }}"
       dataset: staging_dev
       threads: 4
       timeout_seconds: 300
@@ -14,19 +23,19 @@ retail_analytics:
     ci:
       type: bigquery
       method: service-account
-      project: "retail-analytics-test"
+      project: "{{ env_var('DBT_PROJECT') }}"
       dataset: test_integration
       threads: 4
       timeout_seconds: 300
       location: us-central1
-      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS', '') }}"
 
     prod:
       type: bigquery
       method: service-account
-      project: "retail-analytics-prod"
+      project: "{{ env_var('DBT_PROJECT') }}"
       dataset: staging
       threads: 8
       timeout_seconds: 600
       location: us-central1
-      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS', '') }}"

@@ -2,13 +2,16 @@
 -- Materialized: table (full refresh)
 --
 -- Calendar date dimension covering 2023-01-01 through 2027-12-31.
--- Generated via a date spine — no external source required.
+-- Uses BigQuery's native GENERATE_DATE_ARRAY — no external package needed.
 
 {{ config(materialized='table') }}
 
 WITH date_spine AS (
 
-    {{ dbt_date.get_date_dimension("2023-01-01", "2027-12-31") }}
+    SELECT date_day
+    FROM UNNEST(
+        GENERATE_DATE_ARRAY('2023-01-01', '2027-12-31', INTERVAL 1 DAY)
+    ) AS date_day
 
 )
 
