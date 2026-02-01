@@ -1,0 +1,32 @@
+retail_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth  # uses gcloud auth application-default login
+      project: "retail-analytics-dev"
+      dataset: staging_dev
+      threads: 4
+      timeout_seconds: 300
+      location: us-central1
+      priority: interactive
+
+    ci:
+      type: bigquery
+      method: service-account
+      project: "retail-analytics-test"
+      dataset: test_integration
+      threads: 4
+      timeout_seconds: 300
+      location: us-central1
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+
+    prod:
+      type: bigquery
+      method: service-account
+      project: "retail-analytics-prod"
+      dataset: staging
+      threads: 8
+      timeout_seconds: 600
+      location: us-central1
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"

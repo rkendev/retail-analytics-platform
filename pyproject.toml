@@ -1,0 +1,43 @@
+[project]
+name = "retail-analytics-platform"
+version = "0.1.0"
+description = "Multi-source retail analytics platform with medallion architecture on GCP"
+requires-python = ">=3.11"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = false
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "unit: Unit tests (no external dependencies)",
+    "integration: Integration tests (requires GCP credentials)",
+]
+addopts = "-v --tb=short"

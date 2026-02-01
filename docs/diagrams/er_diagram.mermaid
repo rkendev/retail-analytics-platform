@@ -1,0 +1,68 @@
+erDiagram
+    fact_orders ||--o{ dim_customers : "customer_id"
+    fact_orders ||--o{ dim_products : "product_id"
+    fact_orders ||--o{ dim_date : "date_key"
+    fact_orders ||--o{ dim_currency : "currency_code"
+    fact_orders ||--o{ dim_store : "store_key"
+
+    fact_orders {
+        int order_id PK
+        int customer_id FK
+        int product_id FK
+        int date_key FK
+        string currency_code FK
+        string store_key FK
+        int quantity
+        float unit_price_local
+        float unit_price_usd
+        float total_amount_usd
+        bool rate_is_stale
+        date order_date
+        string pipeline_run_id
+    }
+
+    dim_customers {
+        int customer_id PK
+        string name
+        string email
+        string city
+        string country
+        date signup_date
+        string customer_segment
+        int total_orders
+        float lifetime_value_usd
+    }
+
+    dim_products {
+        int product_id PK
+        string product_name
+        string category
+        string subcategory
+        string brand
+        int supplier_id
+        float unit_cost
+    }
+
+    dim_date {
+        int date_key PK
+        date full_date
+        int year
+        int quarter
+        int month
+        string month_name
+        bool is_weekend
+    }
+
+    dim_currency {
+        string currency_code PK
+        float latest_rate_to_usd
+        date rate_as_of
+    }
+
+    dim_store {
+        string store_key PK
+        string store_name
+        string city
+        string region
+        string country
+    }

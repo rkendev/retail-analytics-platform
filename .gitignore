@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# dbt
+dbt_retail/target/
+dbt_retail/dbt_packages/
+dbt_retail/logs/
+
+# Data (generated at runtime)
+data/bronze/
+data/quarantine/
+data/.file_manifest.json
+
+# GCP credentials (NEVER commit)
+*.json
+!dbt_retail/seeds/*.json
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db

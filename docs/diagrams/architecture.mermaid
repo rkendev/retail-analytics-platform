@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph Sources["Data Sources"]
+        A["🌐 Open Exchange Rates API<br/>(REST, daily)"]
+        B["🏭 Faker CDC Simulator<br/>(Python, hourly)"]
+        C["📁 GCS Bucket<br/>(CSV supplier drops)"]
+    end
+
+    subgraph Ingestion["Ingestion Layer (Python)"]
+        D["Pydantic Schema Validator"]
+        E["✅ Valid Records"]
+        F["❌ Quarantine Bucket"]
+    end
+
+    subgraph Storage["Storage Layer"]
+        G["🥉 GCS Bronze<br/>Immutable Parquet<br/>Hive-partitioned"]
+        H["🥈 BigQuery Staging<br/>Views (dbt staging)"]
+        I["🔍 Quality Gates<br/>Circuit Breakers"]
+        J["🥇 BigQuery Marts<br/>Star Schema (dbt)"]
+    end
+
+    subgraph Consumption["Consumption Layer"]
+        K["📊 Streamlit Dashboard"]
+        L["🔎 BigQuery SQL Workspace"]
+    end
+
+    subgraph Orchestration["Cloud Composer / Airflow"]
+        M["DAG: retail_analytics_daily"]
+    end
+
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    D --> F
+    E --> G
+    G --> H
+    H --> I
+    I -->|"PASS"| J
+    I -->|"FAIL"| N["🚨 Pipeline Halt"]
+    J --> K
+    J --> L
+    M -.->|orchestrates| D
+    M -.->|orchestrates| H
+    M -.->|orchestrates| I
+    M -.->|orchestrates| J

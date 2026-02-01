@@ -1,0 +1,26 @@
+services:
+  pipeline:
+    build: .
+    container_name: retail-pipeline
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+      - ${GOOGLE_APPLICATION_CREDENTIALS:-~/.config/gcloud}:/app/gcp-key:ro
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/gcp-key/application_default_credentials.json
+      - EXCHANGE_RATES_API_KEY=${EXCHANGE_RATES_API_KEY}
+      - PYTHONPATH=/app
+    command: ["python", "-m", "src.pipeline", "--config", "configs/dev.yaml"]
+
+  test:
+    build: .
+    container_name: retail-test
+    volumes:
+      - ./tests:/app/tests
+      - ./configs:/app/configs
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app
+    command: ["pytest", "tests/unit/", "-v", "--tb=short"]
+    profiles:
+      - test

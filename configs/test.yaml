@@ -1,0 +1,48 @@
+gcp:
+  project_id: "retail-analytics-test"
+  region: "us-central1"
+
+storage:
+  bronze_bucket: "retail-bronze-test"
+  quarantine_bucket: "retail-quarantine-test"
+
+bigquery:
+  staging_dataset: "test_integration"
+  marts_dataset: "test_integration_marts"
+  metadata_dataset: "test_integration_meta"
+
+sources:
+  exchange_rates:
+    api_url: "https://openexchangerates.org/api/latest.json"
+    api_key_env: "EXCHANGE_RATES_API_KEY"
+    schedule: "daily"
+
+  orders_cdc:
+    records_per_batch: 50
+    late_arrival_pct: 0.10
+    null_injection_pct: 0.05
+    duplicate_pct: 0.05
+    schedule: "hourly"
+
+  supplier_catalog:
+    file_prefix: "supplier_catalog_"
+    expected_columns:
+      - product_id
+      - product_name
+      - category
+      - subcategory
+      - brand
+      - supplier_id
+      - unit_cost
+
+quality:
+  null_rate_threshold: 0.10
+  min_daily_orders: 1
+  max_revenue_deviation_pct: 1.00
+  quarantine_alert_threshold: 5
+
+pipeline:
+  max_retries: 0
+  retry_delay_seconds: 1
+  retry_exponential_backoff: false
+  log_level: "DEBUG"

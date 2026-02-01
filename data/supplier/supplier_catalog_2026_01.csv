@@ -1,0 +1,201 @@
+product_id,product_name,category,subcategory,brand,supplier_id,unit_cost
+1,Purpose Headphones,Electronics,Headphones,Johnson LLC,33,101.0
+2,Election Lighting,Home,Lighting,Taylor Inc,24,4.06
+3,Require Keyboards,Electronics,Keyboards,"Mcclain, Miller and Henderson",49,151.33
+4,All Monitors,Electronics,Monitors,Robinson PLC,21,118.75
+5,Play Kitchen,Home,Kitchen,Hoffman Ltd,4,111.77
+6,Rate Bedding,Home,Bedding,"Gardner, Robinson and Lawrence",39,115.76
+7,Table Bedding,Home,Bedding,Blake and Sons,10,25.91
+8,Save Jackets,Clothing,Jackets,Peterson-Moore,48,106.25
+9,Source Furniture,Home,Furniture,Garcia-James,47,73.36
+10,Her Frozen,Grocery,Frozen,Munoz-Roman,44,114.57
+11,Show Bedding,Home,Bedding,Herrera-Dudley,45,17.11
+12,Human Shoes,Clothing,Shoes,Arnold Ltd,28,6.22
+13,Present Frozen,Grocery,Frozen,Ray-Bush,46,169.91
+14,Answer Shoes,Clothing,Shoes,"Perez, Roberts and Miller",17,93.07
+15,Early Furniture,Home,Furniture,James Group,6,20.39
+16,Prove Jackets,Clothing,Jackets,Martin-Kelly,10,2.67
+17,Religious Headphones,Electronics,Headphones,Miles-Sutton,13,30.92
+18,Away Lighting,Home,Lighting,"Reid, Ferguson and Sanchez",46,17.86
+19,Maintain Bedding,Home,Bedding,Nelson-Schaefer,19,30.08
+20,Rise Jackets,Clothing,Jackets,"Robinson, Nguyen and Tate",8,86.56
+21,Arrive Shoes,Clothing,Shoes,Underwood LLC,38,153.91
+22,Institution Kitchen,Home,Kitchen,Jones-Gentry,23,175.91
+23,Our Bedding,Home,Bedding,"Edwards, Rios and Foster",48,138.83
+24,Who Lighting,Home,Lighting,"Ellis, Baker and Wright",21,37.48
+25,Option Lighting,Home,Lighting,"Baker, Richards and Hurst",16,79.39
+26,Inside Laptops,Electronics,Laptops,Robinson-Bright,46,151.92
+27,Mr Monitors,Electronics,Monitors,Davis-Williams,8,192.39
+28,Break Cables,Electronics,Cables,Burton Ltd,21,175.37
+29,Knowledge Frozen,Grocery,Frozen,"Brown, James and Ferrell",9,17.71
+30,Newspaper Furniture,Home,Furniture,Maddox-Valencia,6,185.16
+31,Activity Lighting,Home,Lighting,"Le, Maldonado and Herrera",35,105.91
+32,Example Furniture,Home,Furniture,"Peterson, Carter and Moore",48,182.48
+33,About Jeans,Clothing,Jeans,"Liu, Baker and Mason",27,34.46
+34,Could Kitchen,Home,Kitchen,"Gaines, Harrell and Evans",21,50.46
+35,Purpose Lighting,Home,Lighting,"Lynch, Hernandez and Farmer",21,176.32
+36,Notice Monitors,Electronics,Monitors,"Sellers, George and Burns",12,56.47
+37,Brother Headphones,Electronics,Headphones,Koch-Decker,1,21.51
+38,Food Dairy,Grocery,Dairy,Brown PLC,45,123.78
+39,Your Kitchen,Home,Kitchen,Miller Group,37,68.72
+40,Team Jackets,Clothing,Jackets,Spence PLC,10,93.69
+41,Space Kitchen,Home,Kitchen,Anderson Group,26,67.99
+42,Your Cables,Electronics,Cables,"Martin, Rose and Obrien",29,128.54
+43,Development Lighting,Home,Lighting,"Campos, Vaughn and Marquez",9,120.05
+44,Inside Furniture,Home,Furniture,"Santos, Kim and Holmes",34,69.67
+45,Camera Jackets,Clothing,Jackets,Walker LLC,17,196.69
+46,Against Laptops,Electronics,Laptops,"Spencer, Chapman and Smith",19,142.33
+47,Second Cables,Electronics,Cables,"Brown, Jones and Johnson",2,144.4
+48,Give Produce,Grocery,Produce,Palmer LLC,7,120.52
+49,Relationship Produce,Grocery,Produce,Lewis-Anderson,44,73.09
+50,Worry Produce,Grocery,Produce,"Johnston, Sanchez and Kennedy",14,44.34
+51,Investment Dairy,Grocery,Dairy,Davis Ltd,25,162.79
+52,Lawyer Decor,Home,Decor,Henderson-Owens,36,70.77
+53,Shoulder Laptops,Electronics,Laptops,Nunez Ltd,3,105.38
+54,Billion Lighting,Home,Lighting,Powell LLC,8,98.9
+55,Such Frozen,Grocery,Frozen,Wright and Sons,32,123.44
+56,Not Beverages,Grocery,Beverages,Taylor-White,44,156.09
+57,Maintain Produce,Grocery,Produce,Baxter Inc,33,43.66
+58,Level Produce,Grocery,Produce,"Garcia, Pearson and Fernandez",25,141.51
+59,Administration Hats,Clothing,Hats,House and Sons,17,105.07
+60,Compare Jackets,Clothing,Jackets,Tucker-Lewis,20,50.05
+61,Institution Shoes,Clothing,Shoes,Martin Inc,49,45.12
+62,In Frozen,Grocery,Frozen,House-Glover,11,169.92
+63,Feeling Snacks,Grocery,Snacks,Horton-Cross,21,159.45
+64,Step Beverages,Grocery,Beverages,"Stanley, Tucker and Lee",43,37.24
+65,Director Kitchen,Home,Kitchen,Riley PLC,13,159.56
+66,Ask Snacks,Grocery,Snacks,"Edwards, Williams and Woods",41,158.59
+67,Wide Jeans,Clothing,Jeans,"Moore, Yu and Miller",38,152.64
+68,Cultural Jeans,Clothing,Jeans,Larson Ltd,38,145.85
+69,Training Frozen,Grocery,Frozen,Powell PLC,29,99.45
+70,Employee Decor,Home,Decor,"Wheeler, Harvey and Barnes",43,9.4
+71,Past T-Shirts,Clothing,T-Shirts,"Mills, Donovan and Harris",19,27.45
+72,Sense Decor,Home,Decor,Allen-Foster,9,162.08
+73,Remain Frozen,Grocery,Frozen,"Evans, Stewart and Walton",4,137.32
+74,Baby Frozen,Grocery,Frozen,Ellis PLC,50,69.26
+75,Black Laptops,Electronics,Laptops,Medina PLC,13,66.9
+76,Evidence Keyboards,Electronics,Keyboards,Mahoney Inc,39,112.39
+77,Until Shoes,Clothing,Shoes,Wood and Sons,40,92.22
+78,Left Beverages,Grocery,Beverages,"Warner, Carr and Archer",36,195.78
+79,Ready Jackets,Clothing,Jackets,"Smith, Montoya and Evans",22,173.79
+80,Record Shoes,Clothing,Shoes,Mcmillan and Sons,48,43.51
+81,Everything Kitchen,Home,Kitchen,Preston Ltd,44,45.33
+82,On Furniture,Home,Furniture,Nelson PLC,32,116.12
+83,Develop Snacks,Grocery,Snacks,"Cooper, Watts and Farrell",44,130.53
+84,Mouth Lighting,Home,Lighting,King-Odonnell,24,141.01
+85,Approach Jackets,Clothing,Jackets,Walters LLC,23,127.94
+86,Another Bedding,Home,Bedding,Cook and Sons,17,121.59
+87,Public Lighting,Home,Lighting,Martin-Ramos,46,174.7
+88,Season Beverages,Grocery,Beverages,Hoffman-Rodriguez,25,64.07
+89,You Cables,Electronics,Cables,"Mckee, Gardner and Davenport",10,98.25
+90,Pass Headphones,Electronics,Headphones,"Hernandez, Anderson and Parker",50,55.14
+91,Way Jackets,Clothing,Jackets,Nolan and Sons,15,65.87
+92,Rest Lighting,Home,Lighting,Estrada LLC,20,146.82
+93,State Lighting,Home,Lighting,"Henson, Russell and Oliver",7,190.31
+94,Clear Laptops,Electronics,Laptops,Hancock and Sons,6,185.33
+95,Upon Beverages,Grocery,Beverages,Johnson-Doyle,3,108.82
+96,Go Monitors,Electronics,Monitors,Pham-Shields,31,54.74
+97,Talk Snacks,Grocery,Snacks,Adams Ltd,1,171.95
+98,Box Produce,Grocery,Produce,Brennan-Garrison,23,105.07
+99,Doctor Keyboards,Electronics,Keyboards,Velasquez Group,23,93.16
+100,Hard Decor,Home,Decor,Hoover-Savage,8,177.39
+101,Dog Beverages,Grocery,Beverages,Keller Group,16,96.98
+102,Get Beverages,Grocery,Beverages,Lin-Rasmussen,36,184.92
+103,Family Laptops,Electronics,Laptops,May-Ross,11,38.41
+104,Threat Produce,Grocery,Produce,"Rivera, Johnson and Wiley",41,113.2
+105,Every Shoes,Clothing,Shoes,Carpenter LLC,1,54.1
+106,American Headphones,Electronics,Headphones,Carlson LLC,16,169.04
+107,Shoulder Jackets,Clothing,Jackets,Graham-Joyce,40,192.89
+108,Business Headphones,Electronics,Headphones,Lam-Lee,39,98.5
+109,Another Hats,Clothing,Hats,"Graham, Meyer and Drake",50,155.96
+110,Right Bedding,Home,Bedding,"Bentley, Mclaughlin and Gonzalez",46,26.28
+111,Lawyer Headphones,Electronics,Headphones,Rush LLC,49,185.45
+112,Price Hats,Clothing,Hats,Alvarado-Martinez,48,141.67
+113,We T-Shirts,Clothing,T-Shirts,Hunter-Estrada,16,109.42
+114,General Beverages,Grocery,Beverages,Terry-Spencer,33,98.58
+115,Dark T-Shirts,Clothing,T-Shirts,Ortega-Gray,19,188.92
+116,Smile Furniture,Home,Furniture,Gilbert LLC,18,127.68
+117,Into Decor,Home,Decor,"Bass, Torres and Clark",20,150.91
+118,Stock Kitchen,Home,Kitchen,"Lawson, Morris and Ramos",12,126.79
+119,Republican Frozen,Grocery,Frozen,Dixon Ltd,34,168.23
+120,Condition Shoes,Clothing,Shoes,"Miller, Robertson and Schultz",23,64.02
+121,Government Produce,Grocery,Produce,Cardenas and Sons,47,122.95
+122,Remember Shoes,Clothing,Shoes,Walker-Gonzalez,24,90.8
+123,Ago Produce,Grocery,Produce,Sanchez Group,42,29.8
+124,Popular Jackets,Clothing,Jackets,Gibson Ltd,10,196.85
+125,Parent Dairy,Grocery,Dairy,Higgins Group,40,135.89
+126,Miss Kitchen,Home,Kitchen,Sanchez-Douglas,11,136.66
+127,Accept Snacks,Grocery,Snacks,Osborne and Sons,37,116.44
+128,Control Snacks,Grocery,Snacks,"Holmes, Williams and Wright",6,175.2
+129,Thus Decor,Home,Decor,Bryant Group,9,84.63
+130,Region Dairy,Grocery,Dairy,"Travis, Larson and Dodson",7,120.94
+131,Vote Bedding,Home,Bedding,Salazar-Ball,15,118.14
+132,Mother Monitors,Electronics,Monitors,Rivas-Kelley,8,65.62
+133,Watch Shoes,Clothing,Shoes,Manning Group,8,127.09
+134,Listen Jeans,Clothing,Jeans,Walton-Larsen,30,22.81
+135,Factor Laptops,Electronics,Laptops,"Washington, Allen and Gonzales",10,125.9
+136,Sell Keyboards,Electronics,Keyboards,Young-Rogers,21,132.38
+137,Walk Laptops,Electronics,Laptops,"Miller, Hernandez and Reyes",35,110.22
+138,Claim Snacks,Grocery,Snacks,"Lewis, Perry and Rivera",4,87.63
+139,Man Frozen,Grocery,Frozen,Brown-Wall,36,62.81
+140,Improve Hats,Clothing,Hats,"Shah, Smith and Gilmore",50,40.73
+141,Parent Beverages,Grocery,Beverages,Woods-Bender,29,55.2
+142,Fire Kitchen,Home,Kitchen,Castaneda-Ashley,8,180.42
+143,Kind Frozen,Grocery,Frozen,"Adkins, Payne and Morrison",25,131.56
+144,Discussion Snacks,Grocery,Snacks,Robinson-Graham,46,90.65
+145,Air Dairy,Grocery,Dairy,Rogers-Shelton,34,196.3
+146,Interview Frozen,Grocery,Frozen,"Martin, Mcdonald and Anderson",11,28.99
+147,Prevent Decor,Home,Decor,"Johnson, Long and Elliott",11,162.47
+148,Agreement Monitors,Electronics,Monitors,Day and Sons,13,123.71
+149,Trial Jeans,Clothing,Jeans,White-Green,29,81.5
+150,Generation T-Shirts,Clothing,T-Shirts,Gibson LLC,25,63.35
+151,Sort Jackets,Clothing,Jackets,Ramirez-Bean,44,76.03
+152,Know Frozen,Grocery,Frozen,Conley-Ruiz,9,31.15
+153,So Bedding,Home,Bedding,"Williams, Crane and Walker",1,133.77
+154,Authority Laptops,Electronics,Laptops,"Williams, Johnson and Wright",40,187.47
+155,Those Dairy,Grocery,Dairy,Howell and Sons,23,178.92
+156,Card Kitchen,Home,Kitchen,Caldwell-Elliott,32,182.14
+157,Discover T-Shirts,Clothing,T-Shirts,Lyons-Wang,25,122.02
+158,Computer Dairy,Grocery,Dairy,"Lawson, Adkins and Wilson",17,25.06
+159,Tell Produce,Grocery,Produce,Oconnell Inc,33,15.61
+160,Particular Headphones,Electronics,Headphones,Hickman PLC,6,163.79
+161,Research Produce,Grocery,Produce,Sanders-Espinoza,6,144.97
+162,Bag Kitchen,Home,Kitchen,"Vaughn, Burton and Garcia",48,182.97
+163,Spring Cables,Electronics,Cables,Jefferson-Burke,50,3.44
+164,Camera Jeans,Clothing,Jeans,"Patton, Reed and Patterson",18,24.58
+165,Hospital Headphones,Electronics,Headphones,Hunter LLC,48,176.77
+166,Actually Beverages,Grocery,Beverages,Short-Garcia,41,188.16
+167,High Hats,Clothing,Hats,"Snow, Stevens and Hernandez",48,2.96
+168,Control Produce,Grocery,Produce,"Boyd, Santos and Gilbert",14,180.58
+169,Wide Cables,Electronics,Cables,"Hampton, Marshall and Petersen",38,65.28
+170,Person Bedding,Home,Bedding,Morris-Sanchez,1,96.79
+171,Worry Decor,Home,Decor,Ramirez Group,35,77.92
+172,Either Jackets,Clothing,Jackets,Hudson-Barnett,43,2.77
+173,Great Keyboards,Electronics,Keyboards,Snyder LLC,22,129.12
+174,Court Shoes,Clothing,Shoes,Lewis-Salinas,35,142.38
+175,Grow Shoes,Clothing,Shoes,Beard-Haynes,28,3.95
+176,Fact Shoes,Clothing,Shoes,"Smith, Vaughan and Miller",34,3.73
+177,Service Frozen,Grocery,Frozen,Freeman-Chang,47,20.23
+178,Rock Jackets,Clothing,Jackets,Brewer-Henry,43,93.71
+179,Structure Hats,Clothing,Hats,Davis and Sons,45,64.28
+180,Interview Lighting,Home,Lighting,"Sanchez, Beck and Wood",28,153.18
+181,On Decor,Home,Decor,"Cooper, Barajas and Pierce",22,148.38
+182,He Jeans,Clothing,Jeans,"Chavez, Parker and Hall",35,4.79
+183,Set Snacks,Grocery,Snacks,Stewart Ltd,16,6.06
+184,North Keyboards,Electronics,Keyboards,"Lopez, Robinson and Washington",11,46.99
+185,Shake Snacks,Grocery,Snacks,"Bray, Warren and Campbell",12,140.46
+186,Black Keyboards,Electronics,Keyboards,Phillips LLC,8,4.0
+187,Country Lighting,Home,Lighting,Smith-Ferguson,32,80.09
+188,Eye Furniture,Home,Furniture,Mccann PLC,46,52.64
+189,Final Cables,Electronics,Cables,"Raymond, Little and Mullins",16,75.28
+190,Board Cables,Electronics,Cables,Andrews Group,9,91.85
+191,Measure Produce,Grocery,Produce,Peterson-Sheppard,39,171.38
+192,Entire Beverages,Grocery,Beverages,Wilson-Jones,43,31.88
+193,Million T-Shirts,Clothing,T-Shirts,Ray Ltd,37,139.17
+194,Argue Jackets,Clothing,Jackets,Hernandez PLC,31,72.87
+195,Fly Cables,Electronics,Cables,Mcknight Inc,28,37.82
+196,Open Monitors,Electronics,Monitors,Obrien-Gibbs,41,130.46
+197,Draw Bedding,Home,Bedding,"James, Kerr and Evans",15,102.5
+198,Per Monitors,Electronics,Monitors,Torres-Oliver,4,75.26
+199,Poor Cables,Electronics,Cables,"Garcia, Farmer and Garrett",7,114.86
+200,Everything Jeans,Clothing,Jeans,"Miller, Allen and Arnold",33,192.88

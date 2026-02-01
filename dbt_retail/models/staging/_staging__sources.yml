@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw data loaded from bronze layer into BigQuery staging tables"
+    database: "{{ var('project_id', 'retail-analytics-dev') }}"
+    schema: "{{ target.dataset }}"
+
+    freshness:
+      warn_after: { count: 24, period: hour }
+      error_after: { count: 48, period: hour }
+
+    loaded_at_field: "PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', pipeline_run_id)"
+
+    tables:
+      - name: raw_orders
+        description: "CDC order records from point-of-sale system"
+        columns:
+          - name: order_id
+            description: "Unique order identifier"
+          - name: customer_id
+            description: "FK to customer"
+          - name: product_id
+            description: "FK to product"
+          - name: quantity
+            description: "Number of units ordered"
+          - name: unit_price_local
+            description: "Price in local currency"
+          - name: currency_code
+            description: "ISO 4217 3-letter currency code"
+          - name: order_date
+            description: "When the order was placed"
+          - name: store_key
+            description: "FK to store location"
+          - name: pipeline_run_id
+            description: "UUID of the pipeline run that loaded this record"
+
+      - name: raw_customers
+        description: "Customer dimension records"
+
+      - name: raw_exchange_rates
+        description: "Daily exchange rates (currency → USD)"
+
+      - name: raw_supplier_catalog
+        description: "Supplier product catalog from CSV drops"

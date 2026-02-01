@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: >
+      One row per order line item.
+      Grain: order_id (each order has a single product in this model).
+      Partitioned by order_date, clustered by store_key and product_id.
+    columns:
+      - name: order_id
+        description: "Unique order identifier from source POS system"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
+      - name: date_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+      - name: store_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_key
+      - name: total_amount_usd
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: dim_customers
+    description: "One row per customer. SCD Type 1 (latest state)."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_products
+    description: "One row per product. Combines order data with supplier catalog."
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_date
+    description: "Calendar date dimension. One row per date."
+    columns:
+      - name: date_key
+        description: "Integer key in YYYYMMDD format"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_currency
+    description: "One row per currency code with latest FX rate."
+    columns:
+      - name: currency_code
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_store
+    description: "One row per store location."
+    columns:
+      - name: store_key
+        tests:
+          - not_null
+          - unique
