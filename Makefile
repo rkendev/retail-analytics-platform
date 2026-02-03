@@ -66,3 +66,10 @@ clean:
 	rm -rf dbt_retail/target dbt_retail/dbt_packages
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	find . -name "*.pyc" -delete 2>/dev/null || true
+
+# ── Dashboard ──
+dashboard:  ## Launch the Streamlit analytics dashboard
+	streamlit run app/dashboard.py
+
+dashboard-dev:  ## Launch dashboard in dev mode (auto-reload)
+	streamlit run app/dashboard.py --server.runOnSave true
