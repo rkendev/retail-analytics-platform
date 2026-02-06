@@ -42,3 +42,5 @@ data/.file_manifest.json
 # OS
 .DS_Store
 Thumbs.db
+secrets/
+logs/

@@ -73,3 +73,32 @@ dashboard:  ## Launch the Streamlit analytics dashboard
 
 dashboard-dev:  ## Launch dashboard in dev mode (auto-reload)
 	streamlit run app/dashboard.py --server.runOnSave true
+
+# ── Airflow (Local Docker Compose) ──────────────────────────────────
+airflow-init:
+	docker compose -f docker-compose-airflow.yml up airflow-init
+
+airflow-up:
+	docker compose -f docker-compose-airflow.yml up -d
+	@echo ""
+	@echo "✅ Airflow is starting..."
+	@echo "   UI: http://localhost:8080"
+	@echo "   Login: airflow / airflow"
+	@echo ""
+	@echo "   Wait ~30s for services to be healthy, then:"
+	@echo "   1. Unpause the 'retail_analytics_daily' DAG"
+	@echo "   2. Trigger a manual run (play button)"
+	@echo ""
+
+airflow-down:
+	docker compose -f docker-compose-airflow.yml down
+
+airflow-reset:
+	docker compose -f docker-compose-airflow.yml down -v
+	@echo "✅ Airflow volumes removed — run 'make airflow-init' to start fresh"
+
+airflow-logs:
+	docker compose -f docker-compose-airflow.yml logs -f airflow-scheduler
+
+airflow-shell:
+	docker compose -f docker-compose-airflow.yml exec airflow-scheduler bash

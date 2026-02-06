@@ -1,0 +1,176 @@
+# docker-compose-airflow.yml
+#
+# Runs Apache Airflow 2.9 locally for the retail-analytics-platform project.
+#
+# Usage:
+#   # First time — initialize the database + create admin user:
+#   docker compose -f docker-compose-airflow.yml up airflow-init
+#
+#   # Start all services:
+#   docker compose -f docker-compose-airflow.yml up -d
+#
+#   # Open the Airflow UI:
+#   http://localhost:8080  (login: airflow / airflow)
+#
+#   # Tear down:
+#   docker compose -f docker-compose-airflow.yml down -v
+#
+# Architecture:
+#   - PostgreSQL (metadata database)
+#   - Airflow Webserver (UI on port 8080)
+#   - Airflow Scheduler (triggers DAG runs)
+#   - Airflow Init (one-shot: DB migration + admin user)
+#
+# Mounts:
+#   - ./dags/          → /opt/airflow/dags/           (DAG definitions)
+#   - ./src/           → /opt/airflow/src/            (pipeline code)
+#   - ./configs/       → /opt/airflow/configs/        (YAML configs)
+#   - ./dbt_retail/    → /opt/airflow/dbt_retail/     (dbt project)
+#   - ./data/          → /opt/airflow/data/           (local data files)
+#   - ./logs/          → /opt/airflow/logs/           (Airflow logs)
+
+x-airflow-common: &airflow-common
+  image: apache/airflow:2.9.3-python3.11
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__FERNET_KEY: ""
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__TEST_CONNECTION: Enabled
+    AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+    AIRFLOW__WEBSERVER__WARN_DEPLOYMENT_EXPOSURE: "false"
+    # Project-specific env vars
+    GCP_PROJECT: "${GCP_PROJECT:-nifty-quanta-486115-d6}"
+    DBT_PROJECT: "${GCP_PROJECT:-nifty-quanta-486115-d6}"
+    EXCHANGE_RATES_API_KEY: "${EXCHANGE_RATES_API_KEY:-}"
+    DBT_PROJECT_DIR: /opt/airflow/dbt_retail
+    PIPELINE_CONFIG: /opt/airflow/configs/dev.yaml
+    PYTHONPATH: /opt/airflow
+    # GCP credentials — mount your service account key
+    GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/secrets/gcp-key.json
+    _PIP_ADDITIONAL_REQUIREMENTS: "google-cloud-bigquery google-cloud-storage dbt-core dbt-bigquery pydantic tenacity requests pyarrow pyyaml faker"
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./src:/opt/airflow/src
+    - ./configs:/opt/airflow/configs
+    - ./dbt_retail:/opt/airflow/dbt_retail
+    - ./data:/opt/airflow/data
+    - ./logs:/opt/airflow/logs
+    # Mount GCP service account key (create this directory and place your key)
+    - ./secrets:/opt/airflow/secrets:ro
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on: &airflow-common-depends-on
+    postgres:
+      condition: service_healthy
+
+services:
+  # ── PostgreSQL (Airflow metadata DB) ────────────────────────────────
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
+    ports:
+      - "5432:5432"
+
+  # ── Airflow Webserver (UI) ──────────────────────────────────────────
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  # ── Airflow Scheduler ───────────────────────────────────────────────
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    healthcheck:
+      test: ["CMD", "airflow", "jobs", "check", "--job-type", "SchedulerJob", "--hostname", "$${HOSTNAME}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  # ── Airflow Init (one-shot: DB migration + admin user) ──────────────
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        # Install project dependencies inside Airflow container
+        pip install --no-cache-dir \
+          google-cloud-bigquery \
+          google-cloud-storage \
+          dbt-core \
+          dbt-bigquery \
+          pydantic \
+          tenacity \
+          requests \
+          pyarrow \
+          pyyaml \
+          faker
+
+        # Initialize the Airflow DB
+        airflow db migrate
+
+        # Create admin user
+        airflow users create \
+          --username airflow \
+          --firstname Airflow \
+          --lastname Admin \
+          --role Admin \
+          --email admin@localhost \
+          --password airflow
+
+        echo "✅ Airflow initialized — DB migrated, admin user created"
+        echo "   Open http://localhost:8080  (login: airflow / airflow)"
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+    user: "0:0"
+
+  # ── Airflow CLI (optional: for running ad-hoc commands) ─────────────
+  airflow-cli:
+    <<: *airflow-common
+    profiles:
+      - debug
+    environment:
+      <<: *airflow-common-env
+      CONNECTION_CHECK_MAX_COUNT: "0"
+    command:
+      - bash
+      - -c
+      - airflow
+
+volumes:
+  postgres-db-volume:
